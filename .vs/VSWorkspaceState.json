@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\SportsBooking.API",
+    "\\src\\SportsBooking.API\\Controllers",
+    "\\src\\SportsBooking.API\\Extensions",
+    "\\src\\SportsBooking.API\\Middleware",
+    "\\src\\SportsBooking.Application",
+    "\\src\\SportsBooking.Application\\Interfaces",
+    "\\tests"
+  ],
+  "SelectedNode": "\\src\\SportsBooking.Application\\Interfaces\\IUnitOfWork.cs",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Projects\\SportsBooking\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D4444444-4444-4444-4444-444444444444}|src\\SportsBooking.API\\SportsBooking.API.csproj|c:\\projects\\sportsbooking\\src\\sportsbooking.api\\extensions\\swaggerextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4444444-4444-4444-4444-444444444444}|src\\SportsBooking.API\\SportsBooking.API.csproj|solutionrelative:src\\sportsbooking.api\\extensions\\swaggerextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5555555-5555-5555-5555-555555555555}|tests\\SportsBooking.Tests\\SportsBooking.Tests.csproj|c:\\projects\\sportsbooking\\tests\\sportsbooking.tests\\geocalculatortests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5555555-5555-5555-5555-555555555555}|tests\\SportsBooking.Tests\\SportsBooking.Tests.csproj|solutionrelative:tests\\sportsbooking.tests\\geocalculatortests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4444444-4444-4444-4444-444444444444}|src\\SportsBooking.API\\SportsBooking.API.csproj|c:\\projects\\sportsbooking\\src\\sportsbooking.api\\sportsbooking.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D4444444-4444-4444-4444-444444444444}|src\\SportsBooking.API\\SportsBooking.API.csproj|solutionrelative:src\\sportsbooking.api\\sportsbooking.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C3333333-3333-3333-3333-333333333333}|src\\SportsBooking.Infrastructure\\SportsBooking.Infrastructure.csproj|c:\\projects\\sportsbooking\\src\\sportsbooking.infrastructure\\sportsbooking.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{C3333333-3333-3333-3333-333333333333}|src\\SportsBooking.Infrastructure\\SportsBooking.Infrastructure.csproj|solutionrelative:src\\sportsbooking.infrastructure\\sportsbooking.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GeoCalculatorTests.cs",
+              "DocumentMoniker": "C:\\Projects\\SportsBooking\\tests\\SportsBooking.Tests\\GeoCalculatorTests.cs",
+              "RelativeDocumentMoniker": "tests\\SportsBooking.Tests\\GeoCalculatorTests.cs",
+              "ToolTip": "C:\\Projects\\SportsBooking\\tests\\SportsBooking.Tests\\GeoCalculatorTests.cs*",
+              "RelativeToolTip": "tests\\SportsBooking.Tests\\GeoCalculatorTests.cs*",
+              "ViewState": "AgIAAA8AAABgZmZmZuYrwAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-11T21:39:44.877Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SportsBooking.Infrastructure",
+              "DocumentMoniker": "C:\\Projects\\SportsBooking\\src\\SportsBooking.Infrastructure\\SportsBooking.Infrastructure.csproj",
+              "RelativeDocumentMoniker": "src\\SportsBooking.Infrastructure\\SportsBooking.Infrastructure.csproj",
+              "ToolTip": "C:\\Projects\\SportsBooking\\src\\SportsBooking.Infrastructure\\SportsBooking.Infrastructure.csproj",
+              "RelativeToolTip": "src\\SportsBooking.Infrastructure\\SportsBooking.Infrastructure.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-08-11T21:21:28.383Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SwaggerExtensions.cs",
+              "DocumentMoniker": "C:\\Projects\\SportsBooking\\src\\SportsBooking.API\\Extensions\\SwaggerExtensions.cs",
+              "RelativeDocumentMoniker": "src\\SportsBooking.API\\Extensions\\SwaggerExtensions.cs",
+              "ToolTip": "C:\\Projects\\SportsBooking\\src\\SportsBooking.API\\Extensions\\SwaggerExtensions.cs*",
+              "RelativeToolTip": "src\\SportsBooking.API\\Extensions\\SwaggerExtensions.cs*",
+              "ViewState": "AgIAAAYAAABgZmZmZmY4wBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-11T21:20:39.106Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SportsBooking.API",
+              "DocumentMoniker": "C:\\Projects\\SportsBooking\\src\\SportsBooking.API\\SportsBooking.API.csproj",
+              "RelativeDocumentMoniker": "src\\SportsBooking.API\\SportsBooking.API.csproj",
+              "ToolTip": "C:\\Projects\\SportsBooking\\src\\SportsBooking.API\\SportsBooking.API.csproj",
+              "RelativeToolTip": "src\\SportsBooking.API\\SportsBooking.API.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-08-11T21:03:52.611Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

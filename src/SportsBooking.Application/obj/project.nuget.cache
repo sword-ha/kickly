@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "dgSpecHash": "Etb0GggZcZs=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\eidh7\\Desktop\\SportsBooking\\src\\SportsBooking.Application\\SportsBooking.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\eidh7\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
+    "C:\\Users\\eidh7\\.nuget\\packages\\fluentvalidation\\12.1.0\\fluentvalidation.12.1.0.nupkg.sha512",
+    "C:\\Users\\eidh7\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\12.1.0\\fluentvalidation.dependencyinjectionextensions.12.1.0.nupkg.sha512",
+    "C:\\Users\\eidh7\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\10.0.0\\microsoft.aspnetcore.cryptography.internal.10.0.0.nupkg.sha512",
+    "C:\\Users\\eidh7\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\10.0.0\\microsoft.aspnetcore.cryptography.keyderivation.10.0.0.nupkg.sha512",
+    "C:\\Users\\eidh7\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\10.0.0\\microsoft.extensions.caching.abstractions.10.0.0.nupkg.sha512",
+    "C:\\Users\\eidh7\\.nuget\\packages\\microsoft.extensions.configuration\\10.0.0\\microsoft.extensions.configuration.10.0.0.nupkg.sha512",
+    "C:\\Users\\eidh7\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\10.0.0\\microsoft.extensions.configuration.abstractions.10.0.0.nupkg.sha512",
+    "C:\\Users\\eidh7\\.nuget\\packages\\microsoft.extensions.configuration.binder\\10.0.0\\microsoft.extensions.configuration.binder.10.0.0.nupkg.sha512",
+    "C:\\Users\\eidh7\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\10.0.0\\microsoft.extensions.dependencyinjection.10.0.0.nupkg.sha512",
+    "C:\\Users\\eidh7\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.0\\microsoft.extensions.dependencyinjection.abstractions.10.0.0.nupkg.sha512",
+    "C:\\Users\\eidh7\\.nuget\\packages\\microsoft.extensions.identity.core\\10.0.0\\microsoft.extensions.identity.core.10.0.0.nupkg.sha512",
+    "C:\\Users\\eidh7\\.nuget\\packages\\microsoft.extensions.identity.stores\\10.0.0\\microsoft.extensions.identity.stores.10.0.0.nupkg.sha512",
+    "C:\\Users\\eidh7\\.nuget\\packages\\microsoft.extensions.logging\\10.0.0\\microsoft.extensions.logging.10.0.0.nupkg.sha512",
+    "C:\\Users\\eidh7\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\10.0.0\\microsoft.extensions.logging.abstractions.10.0.0.nupkg.sha512",
+    "C:\\Users\\eidh7\\.nuget\\packages\\microsoft.extensions.options\\10.0.0\\microsoft.extensions.options.10.0.0.nupkg.sha512",
+    "C:\\Users\\eidh7\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\10.0.0\\microsoft.extensions.options.configurationextensions.10.0.0.nupkg.sha512",
+    "C:\\Users\\eidh7\\.nuget\\packages\\microsoft.extensions.primitives\\10.0.0\\microsoft.extensions.primitives.10.0.0.nupkg.sha512",
+    "C:\\Users\\eidh7\\.nuget\\packages\\system.security.cryptography.pkcs\\10.0.11\\system.security.cryptography.pkcs.10.0.11.nupkg.sha512",
+    "C:\\Users\\eidh7\\.nuget\\packages\\system.security.cryptography.xml\\10.0.11\\system.security.cryptography.xml.10.0.11.nupkg.sha512"
+  ],
+  "logs": []
+}

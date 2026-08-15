@@ -1,0 +1,9 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  SportsBooking.Domain -> C:\Projects\SportsBooking\src\SportsBooking.Domain\bin\Debug\net10.0\SportsBooking.Domain.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:01:35.27
