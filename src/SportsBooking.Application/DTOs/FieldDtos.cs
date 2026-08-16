@@ -49,3 +49,5 @@ public sealed record FieldAvailabilityDto(DateOnly Date, bool IsClosed, IReadOnl
 public sealed record ReviewDto(int Id, int BookingId, int UserId, string UserName, int FieldId, int Rating, string? Comment, DateTime CreatedAtUtc);
 
 public sealed record FavoriteDto(int Id, int FieldId, string FieldName, string City, decimal DayPricePerHour, decimal NightPricePerHour, decimal AverageRating, string? PrimaryImageUrl);
+
+public sealed record FieldCityDto(string City, int FieldCount);

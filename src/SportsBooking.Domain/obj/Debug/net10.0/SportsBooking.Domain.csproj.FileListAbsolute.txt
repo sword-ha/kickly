@@ -22,3 +22,16 @@ C:\Users\eidh7\Desktop\SportsBooking\src\SportsBooking.Domain\obj\Debug\net10.0\
 C:\Users\eidh7\Desktop\SportsBooking\src\SportsBooking.Domain\obj\Debug\net10.0\refint\SportsBooking.Domain.dll
 C:\Users\eidh7\Desktop\SportsBooking\src\SportsBooking.Domain\obj\Debug\net10.0\SportsBooking.Domain.pdb
 C:\Users\eidh7\Desktop\SportsBooking\src\SportsBooking.Domain\obj\Debug\net10.0\ref\SportsBooking.Domain.dll
+C:\Users\abdog\Documents\Default Project\kickly\src\SportsBooking.Domain\bin\Debug\net10.0\SportsBooking.Domain.deps.json
+C:\Users\abdog\Documents\Default Project\kickly\src\SportsBooking.Domain\bin\Debug\net10.0\SportsBooking.Domain.dll
+C:\Users\abdog\Documents\Default Project\kickly\src\SportsBooking.Domain\bin\Debug\net10.0\SportsBooking.Domain.pdb
+C:\Users\abdog\Documents\Default Project\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\SportsBooking.Domain.csproj.AssemblyReference.cache
+C:\Users\abdog\Documents\Default Project\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\SportsBooking.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\abdog\Documents\Default Project\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\SportsBooking.Domain.AssemblyInfoInputs.cache
+C:\Users\abdog\Documents\Default Project\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\SportsBooking.Domain.AssemblyInfo.cs
+C:\Users\abdog\Documents\Default Project\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\SportsBooking.Domain.csproj.CoreCompileInputs.cache
+C:\Users\abdog\Documents\Default Project\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\SportsBooking.Domain.sourcelink.json
+C:\Users\abdog\Documents\Default Project\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\SportsBooking.Domain.dll
+C:\Users\abdog\Documents\Default Project\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\refint\SportsBooking.Domain.dll
+C:\Users\abdog\Documents\Default Project\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\SportsBooking.Domain.pdb
+C:\Users\abdog\Documents\Default Project\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\ref\SportsBooking.Domain.dll

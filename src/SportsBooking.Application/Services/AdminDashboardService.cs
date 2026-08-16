@@ -47,6 +47,29 @@ public sealed class AdminDashboardService : IAdminDashboardService
             totalReviews);
     }
 
+    public async Task<AdminTrendsDto> GetTrendsAsync(int days, CancellationToken ct = default)
+    {
+        days = Math.Clamp(days, 1, 365);
+
+        var (bookings, _) = await _bookingRepository.GetPagedAsync(1, int.MaxValue, null, ct);
+        var start = DateTime.UtcNow.Date.AddDays(-(days - 1));
+
+        var daily = new List<AdminTrendPointDto>();
+        for (var i = 0; i < days; i++)
+        {
+            var day = start.AddDays(i);
+            var dayBookings = bookings.Where(b => b.CreatedAtUtc.Date == day).ToList();
+
+            daily.Add(new AdminTrendPointDto(
+                day,
+                dayBookings.Count,
+                dayBookings.Count(b => b.Status == BookingStatus.Cancelled),
+                dayBookings.Where(IsPaid).Sum(b => b.TotalPrice)));
+        }
+
+        return new AdminTrendsDto(daily);
+    }
+
     private static bool IsPaid(Domain.Entities.Booking b)
         => b.Status is BookingStatus.Confirmed or BookingStatus.Completed;
 }

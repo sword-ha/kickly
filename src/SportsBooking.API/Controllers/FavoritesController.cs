@@ -32,6 +32,13 @@ public sealed class FavoritesController : ControllerBase
         return Ok(result);
     }
 
+    [HttpGet("count")]
+    public async Task<ActionResult<int>> Count(CancellationToken ct)
+    {
+        var result = await _favoriteService.CountAsync(User.GetRequiredUserId(), ct);
+        return Ok(result);
+    }
+
     [HttpPost("{fieldId:int}")]
     public async Task<IActionResult> Add(int fieldId, CancellationToken ct)
     {

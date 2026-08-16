@@ -23,6 +23,16 @@ public sealed class SportService : ISportService
             .ToList();
     }
 
+    public async Task<IReadOnlyCollection<SportDto>> GetAllIncludingInactiveAsync(CancellationToken ct = default)
+    {
+        var sports = await _sportRepository.GetAllAsync(ct);
+        return sports
+            .OrderByDescending(s => s.IsActive)
+            .ThenBy(s => s.Name)
+            .Select(s => new SportDto(s.Id, s.Type, s.Name, s.Slug, s.Description))
+            .ToList();
+    }
+
     public async Task<SportDto> GetByIdAsync(int id, CancellationToken ct = default)
     {
         var sport = await _sportRepository.GetByIdAsync(id, ct)

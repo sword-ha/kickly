@@ -9,10 +9,14 @@ namespace SportsBooking.Application.Services;
 public sealed class NotificationService : INotificationService
 {
     private readonly INotificationRepository _notificationRepository;
+    private readonly IUserRepository _userRepository;
 
-    public NotificationService(INotificationRepository notificationRepository)
+    public NotificationService(
+        INotificationRepository notificationRepository,
+        IUserRepository userRepository)
     {
         _notificationRepository = notificationRepository;
+        _userRepository = userRepository;
     }
 
     public async Task<NotificationSummaryDto> GetAsync(int userId, int page, int pageSize, CancellationToken ct = default)
@@ -82,5 +86,48 @@ public sealed class NotificationService : INotificationService
 
         await _notificationRepository.AddAsync(notification, ct);
         await _notificationRepository.SaveChangesAsync(ct);
+    }
+
+    public async Task<int> GetUnreadCountAsync(int userId, CancellationToken ct = default)
+        => await _notificationRepository.CountUnreadAsync(userId, ct);
+
+    public async Task DeleteAsync(int userId, int notificationId, CancellationToken ct = default)
+    {
+        var notification = await _notificationRepository.GetByIdAsync(notificationId, ct)
+            ?? throw new NotFoundException("Notification was not found.");
+
+        if (notification.UserId != userId)
+        {
+            throw new ForbiddenException("You can only delete your own notifications.");
+        }
+
+        _notificationRepository.Remove(notification);
+        await _notificationRepository.SaveChangesAsync(ct);
+    }
+
+    public async Task<int> BroadcastAsync(string title, string message, CancellationToken ct = default)
+    {
+        var users = await _userRepository.GetPagedAsync(1, int.MaxValue, null, ct);
+        var created = 0;
+
+        foreach (var user in users.Where(u => u.IsActive))
+        {
+            await _notificationRepository.AddAsync(new Notification
+            {
+                UserId = user.Id,
+                Title = title,
+                Message = message,
+                Type = NotificationType.System,
+                IsRead = false
+            }, ct);
+            created++;
+        }
+
+        if (created > 0)
+        {
+            await _notificationRepository.SaveChangesAsync(ct);
+        }
+
+        return created;
     }
 }

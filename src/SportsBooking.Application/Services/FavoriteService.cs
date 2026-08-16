@@ -42,6 +42,9 @@ public sealed class FavoriteService : IFavoriteService
     public async Task<bool> ExistsAsync(int userId, int fieldId, CancellationToken ct = default)
         => await _favoriteRepository.ExistsAsync(userId, fieldId, ct);
 
+    public async Task<int> CountAsync(int userId, CancellationToken ct = default)
+        => await _favoriteRepository.CountAsync(userId, ct);
+
     public async Task<IReadOnlyCollection<FavoriteDto>> GetAsync(int userId, CancellationToken ct = default)
     {
         var favorites = await _favoriteRepository.GetUserFavoritesAsync(userId, ct);

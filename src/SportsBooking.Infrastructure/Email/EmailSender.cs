@@ -23,8 +23,10 @@ public sealed class EmailSender : IEmailSender
     {
         if (string.IsNullOrWhiteSpace(_options.Host) || string.IsNullOrWhiteSpace(_options.FromAddress))
         {
-            throw new InvalidOperationException(
-                "SMTP is not configured. Set the 'Smtp' section in appsettings.json before sending emails.");
+            _logger.LogWarning(
+                "SMTP is not configured. Email '{Subject}' to {To} was NOT sent. Content:\n{Body}",
+                subject, to, htmlBody);
+            return;
         }
 
         var message = new MimeMessage();

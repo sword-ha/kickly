@@ -109,6 +109,39 @@ public sealed class FieldsController : ControllerBase
         return Ok(result);
     }
 
+    [HttpGet("featured")]
+    public async Task<ActionResult<IReadOnlyCollection<FieldListItemDto>>> Featured([FromQuery] int count = 10, CancellationToken ct = default)
+    {
+        var result = await _fieldService.GetFeaturedAsync(count, ct);
+        return Ok(result);
+    }
+
+    [HttpGet("cities")]
+    public async Task<ActionResult<IReadOnlyCollection<FieldCityDto>>> Cities(CancellationToken ct)
+    {
+        var result = await _fieldService.GetCitiesAsync(ct);
+        return Ok(result);
+    }
+
+    [HttpGet("{id:int}/similar")]
+    public async Task<ActionResult<IReadOnlyCollection<FieldListItemDto>>> Similar(int id, [FromQuery] int count = 6, CancellationToken ct = default)
+    {
+        var result = await _fieldService.GetSimilarAsync(id, count, ct);
+        return Ok(result);
+    }
+
+    [HttpGet("{id:int}/schedule")]
+    public async Task<ActionResult<IReadOnlyCollection<FieldAvailabilityDto>>> Schedule(
+        int id,
+        [FromQuery] DateOnly? startDate,
+        [FromQuery] int days = 7,
+        CancellationToken ct = default)
+    {
+        var start = startDate ?? DateOnly.FromDateTime(DateTime.UtcNow);
+        var result = await _fieldService.GetScheduleAsync(id, start, days, ct);
+        return Ok(result);
+    }
+
     [HttpPost]
     [Authorize(Roles = AppRoles.Owner)]
     public async Task<ActionResult<FieldManagementDto>> Create([FromBody] CreateFieldRequest request, CancellationToken ct)

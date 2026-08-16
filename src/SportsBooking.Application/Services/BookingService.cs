@@ -153,6 +153,44 @@ public sealed class BookingService : IBookingService
         return result;
     }
 
+    public async Task<IReadOnlyCollection<BookingDto>> GetUpcomingAsync(int userId, CancellationToken ct = default)
+    {
+        var bookings = await _bookingRepository.GetUserBookingsAsync(userId, ct);
+        var today = DateOnly.FromDateTime(DateTime.UtcNow);
+
+        return bookings
+            .Where(b => b.BookingDate >= today && BookingStatusExtensions.OccupyingStatuses.Contains(b.Status))
+            .Select(b => MapBooking(b, b.Field))
+            .ToList();
+    }
+
+    public async Task<IReadOnlyCollection<BookingDto>> GetPastAsync(int userId, CancellationToken ct = default)
+    {
+        var bookings = await _bookingRepository.GetUserBookingsAsync(userId, ct);
+        var today = DateOnly.FromDateTime(DateTime.UtcNow);
+
+        return bookings
+            .Where(b => b.BookingDate < today || b.Status is BookingStatus.Completed or BookingStatus.Cancelled or BookingStatus.Expired)
+            .Select(b => MapBooking(b, b.Field))
+            .ToList();
+    }
+
+    public async Task<BookingStatsDto> GetStatsAsync(int userId, CancellationToken ct = default)
+    {
+        var bookings = await _bookingRepository.GetUserBookingsAsync(userId, ct);
+        var today = DateOnly.FromDateTime(DateTime.UtcNow);
+
+        return new BookingStatsDto(
+            bookings.Count,
+            bookings.Count(b => b.BookingDate >= today && BookingStatusExtensions.OccupyingStatuses.Contains(b.Status)),
+            bookings.Count(b => b.BookingDate < today || b.Status is BookingStatus.Completed or BookingStatus.Cancelled or BookingStatus.Expired),
+            bookings.Count(b => b.Status == BookingStatus.PendingPayment),
+            bookings.Count(b => b.Status == BookingStatus.Confirmed),
+            bookings.Count(b => b.Status == BookingStatus.Completed),
+            bookings.Count(b => b.Status == BookingStatus.Cancelled),
+            bookings.Where(b => b.Status is BookingStatus.Confirmed or BookingStatus.Completed).Sum(b => b.TotalPrice));
+    }
+
     public async Task<BookingDto> GetByIdAsync(int userId, int bookingId, CancellationToken ct = default)
     {
         var booking = await _bookingRepository.GetByIdAsync(bookingId, ct)

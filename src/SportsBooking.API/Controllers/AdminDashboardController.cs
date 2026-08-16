@@ -24,4 +24,11 @@ public sealed class AdminDashboardController : ControllerBase
         var result = await _dashboardService.GetStatsAsync(ct);
         return Ok(result);
     }
+
+    [HttpGet("dashboard/trends")]
+    public async Task<ActionResult<AdminTrendsDto>> Trends([FromQuery] int days = 30, CancellationToken ct = default)
+    {
+        var result = await _dashboardService.GetTrendsAsync(days, ct);
+        return Ok(result);
+    }
 }

@@ -46,3 +46,10 @@ public sealed record UserProfileDto(
 public sealed record UpdateProfileRequest(string FirstName, string LastName, string PhoneNumber);
 
 public sealed record UpdateLocationRequest(decimal Latitude, decimal Longitude);
+
+public sealed record UserStatsDto(
+    int TotalBookings,
+    int UpcomingBookings,
+    decimal TotalSpent,
+    int FavoritesCount,
+    int ReviewsCount);

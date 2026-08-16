@@ -247,3 +247,38 @@ public sealed class UpdateOwnerBookingStatusRequestValidator : AbstractValidator
         RuleFor(x => x.Reason).MaximumLength(500);
     }
 }
+
+public sealed class BroadcastNotificationRequestValidator : AbstractValidator<BroadcastNotificationRequest>
+{
+    public BroadcastNotificationRequestValidator()
+    {
+        RuleFor(x => x.Title).NotEmpty().MaximumLength(200);
+        RuleFor(x => x.Message).NotEmpty().MaximumLength(2000);
+    }
+}
+
+public sealed class CreateLocationRequestValidator : AbstractValidator<CreateLocationRequest>
+{
+    public CreateLocationRequestValidator()
+    {
+        RuleFor(x => x.Name).NotEmpty().MaximumLength(200);
+        RuleFor(x => x.City).NotEmpty().MaximumLength(100);
+        RuleFor(x => x.Governorate).NotEmpty().MaximumLength(100);
+        RuleFor(x => x.Address).MaximumLength(500);
+        RuleFor(x => x.Latitude).InclusiveBetween(-90m, 90m);
+        RuleFor(x => x.Longitude).InclusiveBetween(-180m, 180m);
+    }
+}
+
+public sealed class AdminUpdateLocationRequestValidator : AbstractValidator<AdminUpdateLocationRequest>
+{
+    public AdminUpdateLocationRequestValidator()
+    {
+        RuleFor(x => x.Name).NotEmpty().MaximumLength(200);
+        RuleFor(x => x.City).NotEmpty().MaximumLength(100);
+        RuleFor(x => x.Governorate).NotEmpty().MaximumLength(100);
+        RuleFor(x => x.Address).MaximumLength(500);
+        RuleFor(x => x.Latitude).InclusiveBetween(-90m, 90m);
+        RuleFor(x => x.Longitude).InclusiveBetween(-180m, 180m);
+    }
+}

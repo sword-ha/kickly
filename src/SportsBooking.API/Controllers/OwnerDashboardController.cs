@@ -32,4 +32,18 @@ public sealed class OwnerDashboardController : ControllerBase
         var result = await _dashboardService.GetRevenueAsync(User.GetRequiredUserId(), days, ct);
         return Ok(result);
     }
+
+    [HttpGet("dashboard/fields-stats")]
+    public async Task<ActionResult<IReadOnlyCollection<OwnerFieldPerformanceDto>>> FieldsStats(CancellationToken ct)
+    {
+        var result = await _dashboardService.GetFieldPerformanceAsync(User.GetRequiredUserId(), ct);
+        return Ok(result);
+    }
+
+    [HttpGet("upcoming-bookings")]
+    public async Task<ActionResult<IReadOnlyCollection<OwnerBookingDto>>> UpcomingBookings(CancellationToken ct)
+    {
+        var result = await _dashboardService.GetUpcomingBookingsAsync(User.GetRequiredUserId(), ct);
+        return Ok(result);
+    }
 }

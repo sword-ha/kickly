@@ -29,3 +29,13 @@ public sealed record OwnerBookingDto(
     DateTime CreatedAtUtc);
 
 public sealed record UpdateOwnerBookingStatusRequest(BookingStatus Status, string? Reason);
+
+public sealed record OwnerFieldPerformanceDto(
+    int FieldId,
+    string FieldName,
+    int TotalBookings,
+    int UpcomingBookings,
+    decimal Revenue,
+    decimal AverageRating,
+    int ReviewCount,
+    bool IsActive);

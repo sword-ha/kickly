@@ -39,6 +39,27 @@ public sealed class BookingsController : ControllerBase
         return Ok(result);
     }
 
+    [HttpGet("upcoming")]
+    public async Task<ActionResult<IReadOnlyCollection<BookingDto>>> Upcoming(CancellationToken ct)
+    {
+        var result = await _bookingService.GetUpcomingAsync(User.GetRequiredUserId(), ct);
+        return Ok(result);
+    }
+
+    [HttpGet("past")]
+    public async Task<ActionResult<IReadOnlyCollection<BookingDto>>> Past(CancellationToken ct)
+    {
+        var result = await _bookingService.GetPastAsync(User.GetRequiredUserId(), ct);
+        return Ok(result);
+    }
+
+    [HttpGet("stats")]
+    public async Task<ActionResult<BookingStatsDto>> Stats(CancellationToken ct)
+    {
+        var result = await _bookingService.GetStatsAsync(User.GetRequiredUserId(), ct);
+        return Ok(result);
+    }
+
     [HttpGet("{id:int}")]
     public async Task<ActionResult<BookingDto>> GetById(int id, CancellationToken ct)
     {

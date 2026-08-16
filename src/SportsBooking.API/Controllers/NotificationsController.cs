@@ -41,4 +41,18 @@ public sealed class NotificationsController : ControllerBase
         await _notificationService.MarkAllReadAsync(User.GetRequiredUserId(), ct);
         return NoContent();
     }
+
+    [HttpGet("unread-count")]
+    public async Task<ActionResult<int>> UnreadCount(CancellationToken ct)
+    {
+        var result = await _notificationService.GetUnreadCountAsync(User.GetRequiredUserId(), ct);
+        return Ok(result);
+    }
+
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> Delete(int id, CancellationToken ct)
+    {
+        await _notificationService.DeleteAsync(User.GetRequiredUserId(), id, ct);
+        return NoContent();
+    }
 }

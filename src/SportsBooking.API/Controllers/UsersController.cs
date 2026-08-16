@@ -56,4 +56,18 @@ public sealed class UsersController : ControllerBase
         var result = await _favoriteService.GetAsync(User.GetRequiredUserId(), ct);
         return Ok(result);
     }
+
+    [HttpGet("me/stats")]
+    public async Task<ActionResult<UserStatsDto>> MyStats(CancellationToken ct)
+    {
+        var result = await _userService.GetStatsAsync(User.GetRequiredUserId(), ct);
+        return Ok(result);
+    }
+
+    [HttpDelete("me")]
+    public async Task<IActionResult> Deactivate(CancellationToken ct)
+    {
+        await _userService.DeactivateAsync(User.GetRequiredUserId(), ct);
+        return NoContent();
+    }
 }

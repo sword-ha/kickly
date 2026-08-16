@@ -12,15 +12,18 @@ public sealed class LocationService : ILocationService
 {
     private readonly ILocationRepository _locationRepository;
     private readonly IFieldRepository _fieldRepository;
+    private readonly IAuditLogService _auditLogService;
     private readonly LocationOptions _locationOptions;
 
     public LocationService(
         ILocationRepository locationRepository,
         IFieldRepository fieldRepository,
+        IAuditLogService auditLogService,
         IOptions<LocationOptions> locationOptions)
     {
         _locationRepository = locationRepository;
         _fieldRepository = fieldRepository;
+        _auditLogService = auditLogService;
         _locationOptions = locationOptions.Value;
     }
 
@@ -63,4 +66,81 @@ public sealed class LocationService : ILocationService
             .Select(l => new LocationDto(l.Id, l.Name, l.City, l.Governorate, l.Address, l.Latitude, l.Longitude))
             .ToList();
     }
+
+    public async Task<PagedResult<LocationDto>> GetPagedAsync(int page, int pageSize, CancellationToken ct = default)
+    {
+        page = Math.Max(page, 1);
+        pageSize = Math.Clamp(pageSize, 1, 100);
+
+        var (items, total) = await _locationRepository.GetPagedAsync(page, pageSize, ct);
+
+        return new PagedResult<LocationDto>(
+            items.Select(l => new LocationDto(l.Id, l.Name, l.City, l.Governorate, l.Address, l.Latitude, l.Longitude)).ToList(),
+            total,
+            page,
+            pageSize);
+    }
+
+    public async Task<LocationDto> CreateAsync(CreateLocationRequest request, CancellationToken ct = default)
+    {
+        var location = new Location
+        {
+            Name = request.Name.Trim(),
+            City = request.City.Trim(),
+            Governorate = request.Governorate.Trim(),
+            Address = request.Address?.Trim() ?? string.Empty,
+            Latitude = request.Latitude,
+            Longitude = request.Longitude
+        };
+
+        await _locationRepository.AddAsync(location, ct);
+        await _locationRepository.SaveChangesAsync(ct);
+
+        await _auditLogService.LogAsync(
+            null, "Create", nameof(Location), location.Id.ToString(), $"\"{location.Name}\"", ct);
+
+        return ToDto(location);
+    }
+
+    public async Task<LocationDto> UpdateAsync(int id, AdminUpdateLocationRequest request, CancellationToken ct = default)
+    {
+        var location = await _locationRepository.GetByIdAsync(id, ct)
+            ?? throw new NotFoundException("Location was not found.");
+
+        location.Name = request.Name.Trim();
+        location.City = request.City.Trim();
+        location.Governorate = request.Governorate.Trim();
+        location.Address = request.Address?.Trim() ?? string.Empty;
+        location.Latitude = request.Latitude;
+        location.Longitude = request.Longitude;
+        location.UpdatedAtUtc = DateTime.UtcNow;
+
+        _locationRepository.Update(location);
+        await _locationRepository.SaveChangesAsync(ct);
+
+        await _auditLogService.LogAsync(
+            null, "Update", nameof(Location), location.Id.ToString(), $"\"{location.Name}\"", ct);
+
+        return ToDto(location);
+    }
+
+    public async Task DeleteAsync(int id, CancellationToken ct = default)
+    {
+        var location = await _locationRepository.GetByIdAsync(id, ct)
+            ?? throw new NotFoundException("Location was not found.");
+
+        if (await _locationRepository.IsInUseAsync(id, ct))
+        {
+            throw new ConflictException("Location cannot be deleted because it is assigned to fields.");
+        }
+
+        _locationRepository.Remove(location);
+        await _locationRepository.SaveChangesAsync(ct);
+
+        await _auditLogService.LogAsync(
+            null, "Delete", nameof(Location), id.ToString(), $"\"{location.Name}\"", ct);
+    }
+
+    private static LocationDto ToDto(Location location)
+        => new(location.Id, location.Name, location.City, location.Governorate, location.Address, location.Latitude, location.Longitude);
 }

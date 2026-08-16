@@ -61,6 +61,9 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IAdminBookingService, AdminBookingService>();
         services.AddScoped<IAdminDashboardService, AdminDashboardService>();
         services.AddScoped<IAdminReportService, AdminReportService>();
+        services.AddScoped<IAdminPaymentService, AdminPaymentService>();
+        services.AddScoped<IAdminReviewService, AdminReviewService>();
+        services.AddScoped<IAdminAuditLogService, AdminAuditLogService>();
 
         services.AddValidatorsFromAssemblyContaining<RegisterRequestValidator>();
 

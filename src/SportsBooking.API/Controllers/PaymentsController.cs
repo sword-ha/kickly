@@ -39,6 +39,16 @@ public sealed class PaymentsController : ControllerBase
         return Ok(result);
     }
 
+    [HttpGet("my-payments")]
+    public async Task<ActionResult<PagedResult<PaymentResponse>>> MyPayments(
+        [FromQuery] int page = 1,
+        [FromQuery] int pageSize = 20,
+        CancellationToken ct = default)
+    {
+        var result = await _paymentService.GetUserPaymentsAsync(User.GetRequiredUserId(), page, pageSize, ct);
+        return Ok(result);
+    }
+
     [HttpPost("{id:int}/refund")]
     public async Task<ActionResult<PaymentResponse>> Refund(int id, [FromBody] RefundPaymentRequest request, CancellationToken ct)
     {

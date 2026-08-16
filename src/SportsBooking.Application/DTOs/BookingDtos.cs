@@ -34,3 +34,13 @@ public sealed record BookingPreviewDto(
 public sealed record PriceLineDto(TimeOnly FromTime, TimeOnly ToTime, DayPeriod Period, decimal HourlyRate, int Hours, decimal LineTotal);
 
 public sealed record CreateReviewRequest(int BookingId, int Rating, string? Comment);
+
+public sealed record BookingStatsDto(
+    int TotalBookings,
+    int UpcomingBookings,
+    int PastBookings,
+    int PendingPayment,
+    int Confirmed,
+    int Completed,
+    int Cancelled,
+    decimal TotalSpent);

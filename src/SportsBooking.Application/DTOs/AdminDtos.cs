@@ -70,3 +70,35 @@ public sealed record AdminReportDto(
     IReadOnlyCollection<AdminUserDto> ActiveUsers);
 
 public sealed record AuditLogDto(int Id, int? UserId, string Action, string EntityName, string EntityId, string? Details, DateTime CreatedAtUtc);
+
+public sealed record AdminPaymentDto(
+    int Id,
+    int BookingId,
+    int FieldId,
+    string FieldName,
+    int UserId,
+    string CustomerName,
+    decimal Amount,
+    PaymentMethod Method,
+    PaymentStatus Status,
+    string? Provider,
+    string? TransactionId,
+    string? FailureReason,
+    DateTime? PaidAtUtc,
+    DateTime? RefundedAtUtc,
+    DateTime CreatedAtUtc);
+
+public sealed record AdminReviewDto(
+    int Id,
+    int BookingId,
+    int FieldId,
+    string FieldName,
+    int UserId,
+    string UserName,
+    int Rating,
+    string? Comment,
+    DateTime CreatedAtUtc);
+
+public sealed record AdminTrendPointDto(DateTime Date, int BookingsCount, int CancelledCount, decimal Revenue);
+
+public sealed record AdminTrendsDto(IReadOnlyCollection<AdminTrendPointDto> Daily);

@@ -54,6 +54,8 @@ public interface IReviewRepository : IUnitOfWork
     Task<Review?> GetByIdAsync(int id, CancellationToken ct = default);
     Task<Review?> GetByBookingIdAsync(int bookingId, CancellationToken ct = default);
     Task<IReadOnlyCollection<Review>> GetFieldReviewsAsync(int fieldId, CancellationToken ct = default);
+    Task<IReadOnlyCollection<Review>> GetByUserAsync(int userId, CancellationToken ct = default);
+    Task<(IReadOnlyCollection<Review> Items, int Total)> GetPagedAsync(int page, int pageSize, CancellationToken ct = default);
     Task AddAsync(Review review, CancellationToken ct = default);
     void Remove(Review review);
 }
@@ -62,6 +64,7 @@ public interface IFavoriteRepository : IUnitOfWork
 {
     Task<Favorite?> GetAsync(int userId, int fieldId, CancellationToken ct = default);
     Task<bool> ExistsAsync(int userId, int fieldId, CancellationToken ct = default);
+    Task<int> CountAsync(int userId, CancellationToken ct = default);
     Task<IReadOnlyCollection<Favorite>> GetUserFavoritesAsync(int userId, CancellationToken ct = default);
     Task AddAsync(Favorite favorite, CancellationToken ct = default);
     void Remove(Favorite favorite);
@@ -71,6 +74,11 @@ public interface ILocationRepository : IUnitOfWork
 {
     Task<IReadOnlyCollection<Location>> GetAllAsync(CancellationToken ct = default);
     Task<Location?> GetByIdAsync(int id, CancellationToken ct = default);
+    Task<(IReadOnlyCollection<Location> Items, int Total)> GetPagedAsync(int page, int pageSize, CancellationToken ct = default);
+    Task<bool> IsInUseAsync(int id, CancellationToken ct = default);
+    Task AddAsync(Location location, CancellationToken ct = default);
+    void Update(Location location);
+    void Remove(Location location);
 }
 
 public interface IFacilityRepository : IUnitOfWork
@@ -92,11 +100,13 @@ public interface INotificationRepository : IUnitOfWork
     Task<int> CountByUserIdAsync(int userId, CancellationToken ct = default);
     Task<Notification?> GetByIdAsync(int id, CancellationToken ct = default);
     Task AddAsync(Notification notification, CancellationToken ct = default);
+    void Remove(Notification notification);
 }
 
 public interface IAuditLogRepository : IUnitOfWork
 {
     Task AddAsync(AuditLog auditLog, CancellationToken ct = default);
+    Task<(IReadOnlyCollection<AuditLog> Items, int Total)> GetPagedAsync(int page, int pageSize, CancellationToken ct = default);
 }
 
 public interface IFieldAvailabilityRepository : IUnitOfWork
@@ -122,6 +132,8 @@ public interface IPaymentRepository : IUnitOfWork
     Task<Payment?> GetByTransactionIdAsync(string transactionId, CancellationToken ct = default);
     Task<IReadOnlyCollection<Payment>> GetByBookingIdAsync(int bookingId, CancellationToken ct = default);
     Task<Payment?> GetLatestByBookingIdAsync(int bookingId, CancellationToken ct = default);
+    Task<(IReadOnlyCollection<Payment> Items, int Total)> GetByUserIdPagedAsync(int userId, int page, int pageSize, CancellationToken ct = default);
+    Task<(IReadOnlyCollection<Payment> Items, int Total)> GetPagedAsync(int page, int pageSize, PaymentStatus? status, CancellationToken ct = default);
     Task AddAsync(Payment payment, CancellationToken ct = default);
     Task<ITransaction> BeginTransactionAsync(CancellationToken ct = default);
 }

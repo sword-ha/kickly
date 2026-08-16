@@ -121,6 +121,20 @@ public sealed class PaymentService : IPaymentService
         return new PaymentStatusResponse(payment.Id, payment.Status, payment.TransactionId);
     }
 
+    public async Task<PagedResult<PaymentResponse>> GetUserPaymentsAsync(int userId, int page, int pageSize, CancellationToken ct = default)
+    {
+        page = Math.Max(page, 1);
+        pageSize = Math.Clamp(pageSize, 1, 100);
+
+        var (items, total) = await _paymentRepository.GetByUserIdPagedAsync(userId, page, pageSize, ct);
+
+        return new PagedResult<PaymentResponse>(
+            items.Select(p => Map(p, p.Booking)).ToList(),
+            total,
+            page,
+            pageSize);
+    }
+
     public async Task<PaymentResponse> ProcessWebhookAsync(PaymentWebhookRequest request, CancellationToken ct = default)
     {
         var payment = await _paymentRepository.GetByTransactionIdAsync(request.TransactionId, ct)

@@ -89,12 +89,15 @@ Use the access token via the Swagger **Authorize** button (`Authorization: Beare
 | GET | `/api/users/me` | JWT |
 | PUT | `/api/users/me` | JWT |
 | PUT | `/api/users/me/location` | JWT |
+| GET | `/api/users/me/stats` | JWT |
+| DELETE | `/api/users/me` | JWT |
 
 ### Sports
 | Method | Endpoint | Auth |
 |---|---|---|
 | GET | `/api/sports` | Public |
 | GET | `/api/sports/{id}` | Public |
+| GET | `/api/sports/all` | Admin (includes inactive) |
 
 ### Fields
 | Method | Endpoint | Auth |
@@ -104,6 +107,10 @@ Use the access token via the Swagger **Authorize** button (`Authorization: Beare
 | GET | `/api/fields/search` | Public |
 | GET | `/api/fields/nearby` | Public |
 | GET | `/api/fields/top-rated` | Public |
+| GET | `/api/fields/featured` | Public |
+| GET | `/api/fields/cities` | Public |
+| GET | `/api/fields/{id}/similar` | Public |
+| GET | `/api/fields/{id}/schedule` | Public |
 | GET | `/api/fields/{id}/availability` | Public |
 | GET | `/api/fields/{id}/reviews` | Public |
 
@@ -113,6 +120,9 @@ Use the access token via the Swagger **Authorize** button (`Authorization: Beare
 | POST | `/api/bookings` | JWT |
 | POST | `/api/bookings/preview` | JWT |
 | GET | `/api/bookings/my-bookings` | JWT |
+| GET | `/api/bookings/upcoming` | JWT |
+| GET | `/api/bookings/past` | JWT |
+| GET | `/api/bookings/stats` | JWT |
 | GET | `/api/bookings/{id}` | JWT |
 | POST | `/api/bookings/{id}/cancel` | JWT |
 
@@ -122,6 +132,7 @@ Use the access token via the Swagger **Authorize** button (`Authorization: Beare
 | POST | `/api/payments` | JWT |
 | GET | `/api/payments/{id}` | JWT |
 | GET | `/api/payments/{id}/status` | JWT |
+| GET | `/api/payments/my-payments` | JWT |
 | POST | `/api/payments/{id}/refund` | JWT |
 | POST | `/api/payments/webhook` | Public (provider callback) |
 
@@ -129,13 +140,67 @@ Use the access token via the Swagger **Authorize** button (`Authorization: Beare
 | Method | Endpoint | Auth |
 |---|---|---|
 | POST | `/api/reviews` | JWT |
+| GET | `/api/reviews/my-reviews` | JWT |
 
 ### Favorites
 | Method | Endpoint | Auth |
 |---|---|---|
 | GET | `/api/favorites` | JWT |
+| GET | `/api/favorites/count` | JWT |
 | POST | `/api/favorites/{fieldId}` | JWT |
 | DELETE | `/api/favorites/{fieldId}` | JWT |
+
+### Notifications
+| Method | Endpoint | Auth |
+|---|---|---|
+| GET | `/api/notifications` | JWT |
+| GET | `/api/notifications/unread-count` | JWT |
+| DELETE | `/api/notifications/{id}` | JWT |
+
+### Owner
+| Method | Endpoint | Auth |
+|---|---|---|
+| GET | `/api/owner/dashboard/stats` | Owner |
+| GET | `/api/owner/dashboard/fields-stats` | Owner |
+| GET | `/api/owner/upcoming-bookings` | Owner |
+| PUT | `/api/owner/bookings/{id}/status` | Owner |
+
+### Admin
+| Method | Endpoint | Auth |
+|---|---|---|
+| GET | `/api/admin/dashboard/stats` | Admin |
+| GET | `/api/admin/dashboard/trends?days=` | Admin |
+| GET | `/api/admin/users` | Admin |
+| GET | `/api/admin/users/{id}` | Admin |
+| GET | `/api/admin/fields` | Admin |
+| GET | `/api/admin/fields/{id}` | Admin |
+| GET | `/api/admin/bookings` | Admin |
+| GET | `/api/admin/bookings/{id}` | Admin |
+| POST | `/api/admin/bookings/{id}/cancel` | Admin |
+| GET | `/api/admin/payments` | Admin |
+| GET | `/api/admin/payments/{id}` | Admin |
+| POST | `/api/admin/payments/{id}/refund` | Admin |
+| GET | `/api/admin/reviews` | Admin |
+| GET | `/api/admin/reviews/{id}` | Admin |
+| DELETE | `/api/admin/reviews/{id}` | Admin |
+| GET | `/api/admin/audit-logs` | Admin |
+| POST | `/api/admin/notifications/broadcast` | Admin |
+
+### Locations
+| Method | Endpoint | Auth |
+|---|---|---|
+| GET | `/api/locations` | Public |
+| GET | `/api/locations/{id}` | Public |
+| GET | `/api/locations/nearby` | Public |
+| GET | `/api/locations/all` | Admin (paged) |
+| POST | `/api/locations` | Admin |
+| PUT | `/api/locations/{id}` | Admin |
+| DELETE | `/api/locations/{id}` | Admin |
+
+### System
+| Method | Endpoint | Auth |
+|---|---|---|
+| GET | `/api/system/health` | Public |
 
 ## ⚙️ Business Rules
 

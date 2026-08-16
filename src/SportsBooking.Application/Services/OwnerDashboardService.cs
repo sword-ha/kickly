@@ -66,4 +66,57 @@ public sealed class OwnerDashboardService : IOwnerDashboardService
 
     private static bool IsPaid(Domain.Entities.Booking b)
         => b.Status is BookingStatus.Confirmed or BookingStatus.Completed;
+
+    public async Task<IReadOnlyCollection<OwnerFieldPerformanceDto>> GetFieldPerformanceAsync(int ownerId, CancellationToken ct = default)
+    {
+        var fields = await _fieldRepository.GetOwnerFieldsAsync(ownerId, ct);
+        var fieldIds = fields.Select(f => f.Id).ToHashSet();
+
+        var (bookings, _) = await _bookingRepository.GetPagedAsync(1, int.MaxValue, null, ct);
+        var ownerBookings = bookings.Where(b => fieldIds.Contains(b.FieldId)).ToList();
+        var today = DateOnly.FromDateTime(DateTime.UtcNow);
+
+        return fields
+            .Select(f => new OwnerFieldPerformanceDto(
+                f.Id,
+                f.Name,
+                ownerBookings.Count(b => b.FieldId == f.Id),
+                ownerBookings.Count(b => b.FieldId == f.Id && b.BookingDate >= today && BookingStatusExtensions.OccupyingStatuses.Contains(b.Status)),
+                ownerBookings.Where(b => b.FieldId == f.Id && IsPaid(b)).Sum(b => b.TotalPrice),
+                f.AverageRating,
+                f.ReviewCount,
+                f.IsActive))
+            .OrderByDescending(p => p.Revenue)
+            .ToList();
+    }
+
+    public async Task<IReadOnlyCollection<OwnerBookingDto>> GetUpcomingBookingsAsync(int ownerId, CancellationToken ct = default)
+    {
+        var fields = await _fieldRepository.GetOwnerFieldsAsync(ownerId, ct);
+        var fieldIds = fields.Select(f => f.Id).ToHashSet();
+
+        var (bookings, _) = await _bookingRepository.GetPagedAsync(1, int.MaxValue, null, ct);
+        var today = DateOnly.FromDateTime(DateTime.UtcNow);
+
+        return bookings
+            .Where(b => fieldIds.Contains(b.FieldId))
+            .Where(b => b.BookingDate >= today && BookingStatusExtensions.OccupyingStatuses.Contains(b.Status))
+            .OrderBy(b => b.BookingDate)
+            .ThenBy(b => b.StartTime)
+            .Take(50)
+            .Select(b => new OwnerBookingDto(
+                b.Id,
+                b.FieldId,
+                b.Field.Name,
+                $"{b.User.FirstName} {b.User.LastName}".Trim(),
+                b.User.Email ?? string.Empty,
+                b.BookingDate,
+                b.StartTime,
+                b.EndTime,
+                b.DurationHours,
+                b.TotalPrice,
+                b.Status,
+                b.CreatedAtUtc))
+            .ToList();
+    }
 }

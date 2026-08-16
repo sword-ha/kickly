@@ -31,6 +31,14 @@ public sealed class SportsController : ControllerBase
         return Ok(result);
     }
 
+    [HttpGet("all")]
+    [Authorize(Roles = AppRoles.Admin)]
+    public async Task<ActionResult<IReadOnlyCollection<SportDto>>> GetAllIncludingInactive(CancellationToken ct)
+    {
+        var result = await _sportService.GetAllIncludingInactiveAsync(ct);
+        return Ok(result);
+    }
+
     [HttpPost]
     [Authorize(Roles = AppRoles.Admin)]
     public async Task<ActionResult<SportDto>> Create([FromBody] CreateSportRequest request, CancellationToken ct)

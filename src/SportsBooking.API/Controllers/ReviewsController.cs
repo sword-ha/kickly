@@ -40,4 +40,12 @@ public sealed class ReviewsController : ControllerBase
         await _reviewService.DeleteAsync(User.GetRequiredUserId(), id, ct);
         return NoContent();
     }
+
+    [HttpGet("my-reviews")]
+    [Authorize]
+    public async Task<ActionResult<IReadOnlyCollection<ReviewDto>>> MyReviews(CancellationToken ct)
+    {
+        var result = await _reviewService.GetMyReviewsAsync(User.GetRequiredUserId(), ct);
+        return Ok(result);
+    }
 }

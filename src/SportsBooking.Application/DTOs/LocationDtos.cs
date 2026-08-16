@@ -11,3 +11,7 @@ public sealed record LocationDetailsDto(
     decimal Latitude,
     decimal Longitude,
     int FieldsCount);
+
+public sealed record CreateLocationRequest(string Name, string City, string Governorate, string Address, decimal Latitude, decimal Longitude);
+
+public sealed record AdminUpdateLocationRequest(string Name, string City, string Governorate, string Address, decimal Latitude, decimal Longitude);

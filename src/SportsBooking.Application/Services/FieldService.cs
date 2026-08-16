@@ -166,6 +166,62 @@ public sealed class FieldService : IFieldService
             .ToList();
     }
 
+    public async Task<IReadOnlyCollection<FieldListItemDto>> GetFeaturedAsync(int count, CancellationToken ct = default)
+    {
+        var fields = await _fieldRepository.GetAllFieldsAsync(ct);
+
+        return fields
+            .Where(f => f.IsActive && f.IsApproved)
+            .Select(f => MapListItem(f, 0))
+            .OrderByDescending(x => x.AverageRating)
+            .ThenByDescending(x => x.ReviewCount)
+            .Take(Math.Clamp(count, 1, 50))
+            .ToList();
+    }
+
+    public async Task<IReadOnlyCollection<FieldCityDto>> GetCitiesAsync(CancellationToken ct = default)
+    {
+        var fields = await _fieldRepository.GetAllFieldsAsync(ct);
+
+        return fields
+            .Where(f => f.IsActive && f.IsApproved)
+            .GroupBy(f => f.City)
+            .Where(g => !string.IsNullOrWhiteSpace(g.Key))
+            .Select(g => new FieldCityDto(g.Key!, g.Count()))
+            .OrderBy(c => c.City)
+            .ToList();
+    }
+
+    public async Task<IReadOnlyCollection<FieldListItemDto>> GetSimilarAsync(int fieldId, int count, CancellationToken ct = default)
+    {
+        var field = await _fieldRepository.GetByIdAsync(fieldId, ct)
+            ?? throw new NotFoundException("Field was not found.");
+
+        var fields = await _fieldRepository.GetAllFieldsAsync(ct);
+
+        return fields
+            .Where(f => f.IsActive && f.IsApproved && f.Id != field.Id)
+            .Select(f => MapListItem(f, 0))
+            .OrderByDescending(x => x.SportType == field.Sport.Type)
+            .ThenByDescending(x => x.City == field.City)
+            .ThenByDescending(x => x.AverageRating)
+            .Take(Math.Clamp(count, 1, 50))
+            .ToList();
+    }
+
+    public async Task<IReadOnlyCollection<FieldAvailabilityDto>> GetScheduleAsync(int fieldId, DateOnly startDate, int days, CancellationToken ct = default)
+    {
+        days = Math.Clamp(days, 1, 90);
+        var result = new List<FieldAvailabilityDto>();
+
+        for (var i = 0; i < days; i++)
+        {
+            result.Add(await GetAvailabilityAsync(fieldId, startDate.AddDays(i), ct));
+        }
+
+        return result;
+    }
+
     public async Task<FieldAvailabilityDto> GetAvailabilityAsync(int fieldId, DateOnly date, CancellationToken ct = default)
     {
         var field = await _fieldRepository.GetByIdAsync(fieldId, ct)

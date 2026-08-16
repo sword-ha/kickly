@@ -121,6 +121,22 @@ public sealed class ReviewService : IReviewService
         await RecalculateRatingAsync(review.FieldId, ct);
     }
 
+    public async Task<IReadOnlyCollection<ReviewDto>> GetMyReviewsAsync(int userId, CancellationToken ct = default)
+    {
+        var reviews = await _reviewRepository.GetByUserAsync(userId, ct);
+
+        return reviews.Select(r => new ReviewDto(
+                r.Id,
+                r.BookingId,
+                r.UserId,
+                $"{r.User.FirstName} {r.User.LastName}".Trim(),
+                r.FieldId,
+                r.Rating,
+                r.Comment,
+                r.CreatedAtUtc))
+            .ToList();
+    }
+
     private async Task RecalculateRatingAsync(int fieldId, CancellationToken ct)
     {
         var reviews = await _reviewRepository.GetFieldReviewsAsync(fieldId, ct);

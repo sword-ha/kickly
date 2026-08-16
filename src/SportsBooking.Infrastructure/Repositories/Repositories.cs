@@ -255,7 +255,10 @@ public sealed class ReviewRepository : IReviewRepository
     public ReviewRepository(SportsBookingDbContext db) => _db = db;
 
     public Task<Review?> GetByIdAsync(int id, CancellationToken ct = default)
-        => _db.Reviews.FirstOrDefaultAsync(r => r.Id == id, ct);
+        => _db.Reviews
+            .Include(r => r.User)
+            .Include(r => r.Field)
+            .FirstOrDefaultAsync(r => r.Id == id, ct);
 
     public Task<Review?> GetByBookingIdAsync(int bookingId, CancellationToken ct = default)
         => _db.Reviews.FirstOrDefaultAsync(r => r.BookingId == bookingId, ct);
@@ -268,6 +271,34 @@ public sealed class ReviewRepository : IReviewRepository
             .OrderByDescending(r => r.CreatedAtUtc)
             .ToListAsync(ct);
         return reviews;
+    }
+
+    public async Task<IReadOnlyCollection<Review>> GetByUserAsync(int userId, CancellationToken ct = default)
+    {
+        var reviews = await _db.Reviews
+            .Include(r => r.User)
+            .Include(r => r.Field)
+            .Where(r => r.UserId == userId)
+            .OrderByDescending(r => r.CreatedAtUtc)
+            .ToListAsync(ct);
+        return reviews;
+    }
+
+    public async Task<(IReadOnlyCollection<Review> Items, int Total)> GetPagedAsync(int page, int pageSize, CancellationToken ct = default)
+    {
+        var query = _db.Reviews
+            .Include(r => r.User)
+            .Include(r => r.Field)
+            .AsNoTracking();
+
+        var total = await query.CountAsync(ct);
+        var items = await query
+            .OrderByDescending(r => r.CreatedAtUtc)
+            .Skip((Math.Max(page, 1) - 1) * Math.Clamp(pageSize, 1, 100))
+            .Take(Math.Clamp(pageSize, 1, 100))
+            .ToListAsync(ct);
+
+        return (items, total);
     }
 
     public async Task AddAsync(Review review, CancellationToken ct = default)
@@ -290,6 +321,9 @@ public sealed class FavoriteRepository : IFavoriteRepository
 
     public Task<bool> ExistsAsync(int userId, int fieldId, CancellationToken ct = default)
         => _db.Favorites.AnyAsync(f => f.UserId == userId && f.FieldId == fieldId, ct);
+
+    public Task<int> CountAsync(int userId, CancellationToken ct = default)
+        => _db.Favorites.CountAsync(f => f.UserId == userId, ct);
 
     public async Task<IReadOnlyCollection<Favorite>> GetUserFavoritesAsync(int userId, CancellationToken ct = default)
     {
@@ -325,6 +359,31 @@ public sealed class LocationRepository : ILocationRepository
 
     public Task<Location?> GetByIdAsync(int id, CancellationToken ct = default)
         => _db.Locations.FirstOrDefaultAsync(l => l.Id == id, ct);
+
+    public async Task<(IReadOnlyCollection<Location> Items, int Total)> GetPagedAsync(int page, int pageSize, CancellationToken ct = default)
+    {
+        var query = _db.Locations.AsNoTracking();
+
+        var total = await query.CountAsync(ct);
+        var items = await query
+            .OrderBy(l => l.Governorate)
+            .ThenBy(l => l.Name)
+            .Skip((Math.Max(page, 1) - 1) * Math.Clamp(pageSize, 1, 100))
+            .Take(Math.Clamp(pageSize, 1, 100))
+            .ToListAsync(ct);
+
+        return (items, total);
+    }
+
+    public Task<bool> IsInUseAsync(int id, CancellationToken ct = default)
+        => _db.Fields.AnyAsync(f => f.LocationId == id, ct);
+
+    public async Task AddAsync(Location location, CancellationToken ct = default)
+        => await _db.Locations.AddAsync(location, ct);
+
+    public void Update(Location location) => _db.Locations.Update(location);
+
+    public void Remove(Location location) => _db.Locations.Remove(location);
 
     public Task<int> SaveChangesAsync(CancellationToken ct = default)
         => _db.SaveChangesAsync(ct);
@@ -429,6 +488,8 @@ public sealed class NotificationRepository : INotificationRepository
     public async Task AddAsync(Notification notification, CancellationToken ct = default)
         => await _db.Notifications.AddAsync(notification, ct);
 
+    public void Remove(Notification notification) => _db.Notifications.Remove(notification);
+
     public Task<int> SaveChangesAsync(CancellationToken ct = default)
         => _db.SaveChangesAsync(ct);
 }
@@ -441,6 +502,20 @@ public sealed class AuditLogRepository : IAuditLogRepository
 
     public async Task AddAsync(AuditLog auditLog, CancellationToken ct = default)
         => await _db.AuditLogs.AddAsync(auditLog, ct);
+
+    public async Task<(IReadOnlyCollection<AuditLog> Items, int Total)> GetPagedAsync(int page, int pageSize, CancellationToken ct = default)
+    {
+        var query = _db.AuditLogs.AsNoTracking();
+
+        var total = await query.CountAsync(ct);
+        var items = await query
+            .OrderByDescending(l => l.CreatedAtUtc)
+            .Skip((Math.Max(page, 1) - 1) * Math.Clamp(pageSize, 1, 100))
+            .Take(Math.Clamp(pageSize, 1, 100))
+            .ToListAsync(ct);
+
+        return (items, total);
+    }
 
     public Task<int> SaveChangesAsync(CancellationToken ct = default)
         => _db.SaveChangesAsync(ct);
@@ -484,6 +559,9 @@ public sealed class PaymentRepository : IPaymentRepository
     public Task<Payment?> GetByIdAsync(int id, CancellationToken ct = default)
         => _db.Payments
             .Include(p => p.Booking)
+                .ThenInclude(b => b.Field)
+            .Include(p => p.Booking)
+                .ThenInclude(b => b.User)
             .FirstOrDefaultAsync(p => p.Id == id, ct);
 
     public Task<Payment?> GetByTransactionIdAsync(string transactionId, CancellationToken ct = default)
@@ -507,6 +585,47 @@ public sealed class PaymentRepository : IPaymentRepository
             .Where(p => p.BookingId == bookingId)
             .OrderByDescending(p => p.CreatedAtUtc)
             .FirstOrDefaultAsync(ct);
+
+    private IQueryable<Payment> PaymentsQuery()
+        => _db.Payments
+            .Include(p => p.Booking)
+                .ThenInclude(b => b.Field)
+            .Include(p => p.Booking)
+                .ThenInclude(b => b.User)
+            .AsNoTracking();
+
+    public async Task<(IReadOnlyCollection<Payment> Items, int Total)> GetByUserIdPagedAsync(int userId, int page, int pageSize, CancellationToken ct = default)
+    {
+        var query = PaymentsQuery().Where(p => p.Booking.UserId == userId);
+
+        var total = await query.CountAsync(ct);
+        var items = await query
+            .OrderByDescending(p => p.CreatedAtUtc)
+            .Skip((Math.Max(page, 1) - 1) * Math.Clamp(pageSize, 1, 100))
+            .Take(Math.Clamp(pageSize, 1, 100))
+            .ToListAsync(ct);
+
+        return (items, total);
+    }
+
+    public async Task<(IReadOnlyCollection<Payment> Items, int Total)> GetPagedAsync(int page, int pageSize, PaymentStatus? status, CancellationToken ct = default)
+    {
+        var query = PaymentsQuery();
+
+        if (status.HasValue)
+        {
+            query = query.Where(p => p.Status == status.Value);
+        }
+
+        var total = await query.CountAsync(ct);
+        var items = await query
+            .OrderByDescending(p => p.CreatedAtUtc)
+            .Skip((Math.Max(page, 1) - 1) * Math.Clamp(pageSize, 1, 100))
+            .Take(Math.Clamp(pageSize, 1, 100))
+            .ToListAsync(ct);
+
+        return (items, total);
+    }
 
     public async Task AddAsync(Payment payment, CancellationToken ct = default)
         => await _db.Payments.AddAsync(payment, ct);
