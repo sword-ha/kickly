@@ -18,7 +18,7 @@ public static class DependencyInjections
 
             services.AddValidatorsFromAssemblyContaining<Program>().AddFluentValidationAutoValidation();
 
-            services.AddAuthorization();          
+            services.AddAuthorization();
 
             services.AddExceptionHandler<GlobalExceptionHandler>();
 

@@ -913,7 +913,6 @@ D:\Hossam_UpToDate\kickly\src\SportsBooking.API\obj\Debug\net10.0\staticwebasset
 D:\Hossam_UpToDate\kickly\src\SportsBooking.API\obj\Debug\net10.0\staticwebassets.development.json
 D:\Hossam_UpToDate\kickly\src\SportsBooking.API\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 D:\Hossam_UpToDate\kickly\src\SportsBooking.API\obj\Debug\net10.0\swae.build.ex.cache
-D:\Hossam_UpToDate\kickly\src\SportsBooking.API\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 D:\Hossam_UpToDate\kickly\src\SportsBooking.API\obj\Debug\net10.0\SportsBo.0D164855.Up2Date
 D:\Hossam_UpToDate\kickly\src\SportsBooking.API\obj\Debug\net10.0\SportsBooking.API.dll
 D:\Hossam_UpToDate\kickly\src\SportsBooking.API\obj\Debug\net10.0\refint\SportsBooking.API.dll
@@ -923,3 +922,4 @@ D:\Hossam_UpToDate\kickly\src\SportsBooking.API\obj\Debug\net10.0\ref\SportsBook
 D:\Hossam_UpToDate\kickly\src\SportsBooking.API\bin\Debug\net10.0\Microsoft.AspNetCore.Mvc.Versioning.dll
 D:\Hossam_UpToDate\kickly\src\SportsBooking.API\bin\Debug\net10.0\Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll
 D:\Hossam_UpToDate\kickly\src\SportsBooking.API\bin\Debug\net10.0\Microsoft.AspNetCore.OpenApi.dll
+D:\Hossam_UpToDate\kickly\src\SportsBooking.API\bin\Debug\net10.0\dotnet-tools.json

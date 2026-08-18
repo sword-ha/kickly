@@ -66,7 +66,8 @@ public sealed class AuthService : IAuthService
             throw new ValidationDomainException(FormatErrors(result.Errors));
         }
 
-        await EnsureRoleAsync(UserRole.Customer.ToString());
+        await EnsureRoleAsync( UserRole.Customer.ToString() );
+
         await _userManager.AddToRoleAsync(user, UserRole.Customer.ToString());
 
         var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);

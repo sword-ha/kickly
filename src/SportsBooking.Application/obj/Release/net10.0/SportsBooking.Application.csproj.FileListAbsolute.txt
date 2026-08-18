@@ -1,0 +1,16 @@
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Application\bin\Release\net10.0\SportsBooking.Application.deps.json
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Application\bin\Release\net10.0\SportsBooking.Application.dll
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Application\bin\Release\net10.0\SportsBooking.Application.pdb
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Application\bin\Release\net10.0\SportsBooking.Domain.dll
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Application\bin\Release\net10.0\SportsBooking.Domain.pdb
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Application\obj\Release\net10.0\SportsBooking.Application.csproj.AssemblyReference.cache
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Application\obj\Release\net10.0\SportsBooking.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Application\obj\Release\net10.0\SportsBooking.Application.AssemblyInfoInputs.cache
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Application\obj\Release\net10.0\SportsBooking.Application.AssemblyInfo.cs
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Application\obj\Release\net10.0\SportsBooking.Application.csproj.CoreCompileInputs.cache
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Application\obj\Release\net10.0\SportsBooking.Application.sourcelink.json
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Application\obj\Release\net10.0\SportsBo.3BBEB369.Up2Date
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Application\obj\Release\net10.0\SportsBooking.Application.dll
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Application\obj\Release\net10.0\refint\SportsBooking.Application.dll
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Application\obj\Release\net10.0\SportsBooking.Application.pdb
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Application\obj\Release\net10.0\ref\SportsBooking.Application.dll
