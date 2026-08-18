@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Options;
 using SportsBooking.Application.DTOs;
 using SportsBooking.Application.Interfaces;
@@ -6,6 +7,7 @@ using SportsBooking.Application.Options;
 using SportsBooking.Domain.Entities;
 using SportsBooking.Domain.Enums;
 using SportsBooking.Domain.Exceptions;
+using System.Text;
 
 namespace SportsBooking.Application.Services;
 
@@ -58,6 +60,7 @@ public sealed class AuthService : IAuthService
         };
 
         var result = await _userManager.CreateAsync(user, request.Password);
+
         if (!result.Succeeded)
         {
             throw new ValidationDomainException(FormatErrors(result.Errors));
@@ -67,10 +70,13 @@ public sealed class AuthService : IAuthService
         await _userManager.AddToRoleAsync(user, UserRole.Customer.ToString());
 
         var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+        var code = WebEncoders.Base64UrlEncode( Encoding.UTF8.GetBytes( token ) );
+
         await _emailSender.SendAsync(
             user.Email!,
             "Confirm your email - Sports Booking",
-            BuildConfirmationEmail(user.Id, token),
+            BuildConfirmationEmail(user.Id, code),
             ct);
 
         return new RegisterResponse(
@@ -105,7 +111,8 @@ public sealed class AuthService : IAuthService
             throw new ValidationDomainException("Invalid email or password.");
         }
 
-        await _userManager.ResetAccessFailedCountAsync(user);
+        await _userManager.ResetAccessFailedCountAsync( user );
+
         return await BuildAuthResponseAsync(user, ct);
     }
 
@@ -171,10 +178,11 @@ public sealed class AuthService : IAuthService
     public async Task<MessageResponse> ResetPasswordAsync(ResetPasswordRequest request, CancellationToken ct = default)
     {
         var user = await _userManager.FindByIdAsync(request.UserId.ToString())
-            ?? throw new ValidationDomainException("Invalid password reset request.");
+            ?? throw new ValidationDomainException("Invalid password reset request." );
 
-        var result = await _userManager.ResetPasswordAsync(user, request.Token, request.NewPassword);
-        if (!result.Succeeded)
+        var result = await _userManager.ResetPasswordAsync( user, request.Token, request.NewPassword );
+
+        if(!result.Succeeded)
         {
             throw new ValidationDomainException(FormatErrors(result.Errors));
         }
@@ -188,18 +196,21 @@ public sealed class AuthService : IAuthService
             ?? throw new NotFoundException("User was not found.");
 
         var result = await _userManager.ChangePasswordAsync(user, request.CurrentPassword, request.NewPassword);
+
         if (!result.Succeeded)
         {
             throw new ValidationDomainException(FormatErrors(result.Errors));
         }
 
         var activeTokens = await _refreshTokenRepository.GetActiveByUserIdAsync(userId, ct);
+
         foreach (var token in activeTokens)
         {
             token.RevokedAtUtc = DateTime.UtcNow;
         }
 
         await _refreshTokenRepository.SaveChangesAsync(ct);
+
         return new MessageResponse("Password changed successfully.");
     }
 
@@ -208,7 +219,11 @@ public sealed class AuthService : IAuthService
         var user = await _userManager.FindByIdAsync(request.UserId.ToString())
             ?? throw new NotFoundException("User was not found.");
 
-        var result = await _userManager.ConfirmEmailAsync(user, request.Token);
+            var decodedTokenBytes = WebEncoders.Base64UrlDecode( request.Token );
+
+            var token = Encoding.UTF8.GetString( decodedTokenBytes );
+
+        var result = await _userManager.ConfirmEmailAsync(user, token);
         if (!result.Succeeded)
         {
             throw new ValidationDomainException("Invalid or expired email confirmation token.");
@@ -223,11 +238,14 @@ public sealed class AuthService : IAuthService
 
         if (user is not null && !user.EmailConfirmed)
         {
-            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync( user );
+
+            var code =   WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
+
             await _emailSender.SendAsync(
                 user.Email!,
                 "Confirm your email - Sports Booking",
-                BuildConfirmationEmail(user.Id, token),
+                BuildConfirmationEmail(user.Id, code),
                 ct);
         }
 
@@ -270,7 +288,7 @@ public sealed class AuthService : IAuthService
 
     private string BuildConfirmationEmail(int userId, string token)
     {
-        var url = $"{_appOptions.ClientBaseUrl}{_appOptions.ConfirmEmailPath}?userId={userId}&token={Uri.EscapeDataString(token)}";
+        var url = $"{_appOptions.ClientBaseUrl}{_appOptions.ConfirmEmailPath}?userId={userId}&token={token}";
         return $"""
             <h2>Welcome to Sports Booking!</h2>
             <p>Thanks for registering. Please confirm your email address by clicking the link below:</p>
@@ -282,7 +300,7 @@ public sealed class AuthService : IAuthService
 
     private string BuildPasswordResetEmail(int userId, string token)
     {
-        var url = $"{_appOptions.ClientBaseUrl}{_appOptions.ResetPasswordPath}?userId={userId}&token={Uri.EscapeDataString(token)}";
+        var url = $"{_appOptions.ClientBaseUrl}{_appOptions.ResetPasswordPath}?userId={userId}&token={token}";
         return $"""
             <h2>Reset your password</h2>
             <p>You requested to reset your password. Click the link below to choose a new one:</p>

@@ -74,6 +74,22 @@
           }
         }
       },
+      "Microsoft.AspNetCore.WebUtilities/10.0.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Net.Http.Headers": "10.0.11"
+        },
+        "compile": {
+          "lib/net10.0/Microsoft.AspNetCore.WebUtilities.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.AspNetCore.WebUtilities.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Caching.Abstractions/10.0.0": {
         "type": "package",
         "dependencies": {
@@ -306,7 +322,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Primitives/10.0.0": {
+      "Microsoft.Extensions.Primitives/10.0.11": {
         "type": "package",
         "compile": {
           "lib/net10.0/Microsoft.Extensions.Primitives.dll": {
@@ -320,6 +336,22 @@
         },
         "build": {
           "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Net.Http.Headers/10.0.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "10.0.11"
+        },
+        "compile": {
+          "lib/net10.0/Microsoft.Net.Http.Headers.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Net.Http.Headers.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.Security.Cryptography.Pkcs/10.0.11": {
@@ -477,6 +509,21 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
         "microsoft.aspnetcore.cryptography.keyderivation.10.0.0.nupkg.sha512",
         "microsoft.aspnetcore.cryptography.keyderivation.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.WebUtilities/10.0.11": {
+      "sha512": "jEa+jjO5RAuq3rZQzeyFhz6NyEAKHvsBgTzamhiUOUM8oAdQFMwxNz3cRpiKCg7DtMcLCyaotZ/h/eais58u6g==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.webutilities/10.0.11",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net10.0/Microsoft.AspNetCore.WebUtilities.dll",
+        "lib/net10.0/Microsoft.AspNetCore.WebUtilities.xml",
+        "microsoft.aspnetcore.webutilities.10.0.11.nupkg.sha512",
+        "microsoft.aspnetcore.webutilities.nuspec"
       ]
     },
     "Microsoft.Extensions.Caching.Abstractions/10.0.0": {
@@ -884,10 +931,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Primitives/10.0.0": {
-      "sha512": "inRnbpCS0nwO/RuoZIAqxQUuyjaknOOnCEZB55KSMMjRhl0RQDttSmLSGsUJN3RQ3ocf5NDLFd2mOQViHqMK5w==",
+    "Microsoft.Extensions.Primitives/10.0.11": {
+      "sha512": "SXcz+kF+4Oo9b1+55zntpJFYfwb1jw66ioxptyNOOTDc8g2FHnBFWjZpsWfCvZIhzr0x+4e2trVTs4OKwQfBtw==",
       "type": "package",
-      "path": "microsoft.extensions.primitives/10.0.0",
+      "path": "microsoft.extensions.primitives/10.0.11",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -908,9 +955,24 @@
         "lib/net9.0/Microsoft.Extensions.Primitives.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
-        "microsoft.extensions.primitives.10.0.0.nupkg.sha512",
+        "microsoft.extensions.primitives.10.0.11.nupkg.sha512",
         "microsoft.extensions.primitives.nuspec",
         "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Net.Http.Headers/10.0.11": {
+      "sha512": "k1F3ueFIHU8V9rd9qzCJoeZGhuErKauOdymjyZh3ECxnssa503bHtNfM5LmHHhrBGPqFq4HDq5rEElfDzFNsEA==",
+      "type": "package",
+      "path": "microsoft.net.http.headers/10.0.11",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net10.0/Microsoft.Net.Http.Headers.dll",
+        "lib/net10.0/Microsoft.Net.Http.Headers.xml",
+        "microsoft.net.http.headers.10.0.11.nupkg.sha512",
+        "microsoft.net.http.headers.nuspec"
       ]
     },
     "System.Security.Cryptography.Pkcs/10.0.11": {
@@ -988,6 +1050,7 @@
       "BCrypt.Net-Next >= 4.0.3",
       "FluentValidation >= 12.1.0",
       "FluentValidation.DependencyInjectionExtensions >= 12.1.0",
+      "Microsoft.AspNetCore.WebUtilities >= 10.0.11",
       "Microsoft.Extensions.Identity.Core >= 10.0.0",
       "Microsoft.Extensions.Options.ConfigurationExtensions >= 10.0.0",
       "SportsBooking.Domain >= 1.0.0",
@@ -995,23 +1058,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\abdog\\.nuget\\packages\\": {},
+    "C:\\Users\\LAPTOP WORLD\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\abdog\\Documents\\Default Project\\kickly\\src\\SportsBooking.Application\\SportsBooking.Application.csproj",
+      "projectUniqueName": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Application\\SportsBooking.Application.csproj",
       "projectName": "SportsBooking.Application",
-      "projectPath": "C:\\Users\\abdog\\Documents\\Default Project\\kickly\\src\\SportsBooking.Application\\SportsBooking.Application.csproj",
-      "packagesPath": "C:\\Users\\abdog\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\abdog\\Documents\\Default Project\\kickly\\src\\SportsBooking.Application\\obj\\",
+      "projectPath": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Application\\SportsBooking.Application.csproj",
+      "packagesPath": "C:\\Users\\LAPTOP WORLD\\.nuget\\packages\\",
+      "outputPath": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\abdog\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\LAPTOP WORLD\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1020,6 +1083,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1027,8 +1091,8 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\abdog\\Documents\\Default Project\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj": {
-              "projectPath": "C:\\Users\\abdog\\Documents\\Default Project\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj"
+            "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj": {
+              "projectPath": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj"
             }
           }
         }
@@ -1062,6 +1126,10 @@
             "target": "Package",
             "version": "[12.1.0, )"
           },
+          "Microsoft.AspNetCore.WebUtilities": {
+            "target": "Package",
+            "version": "[10.0.11, )"
+          },
           "Microsoft.Extensions.Identity.Core": {
             "target": "Package",
             "version": "[10.0.0, )"
@@ -1091,7 +1159,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.303/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

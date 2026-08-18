@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using SportsBooking.API.Extensions;
 using SportsBooking.Application.DTOs;
 using SportsBooking.Application.Interfaces;
@@ -8,20 +7,17 @@ namespace SportsBooking.API.Controllers;
 
 [ApiController]
 [Route("api/auth")]
-public sealed class AuthController : ControllerBase
+public sealed class AuthController( IAuthService authService ) : ControllerBase
 {
-    private readonly IAuthService _authService;
+    private readonly IAuthService _authService = authService;
 
-    public AuthController(IAuthService authService)
-    {
-        _authService = authService;
-    }
 
     [HttpPost("register")]
     [AllowAnonymous]
-    public async Task<ActionResult<RegisterResponse>> Register([FromBody] RegisterRequest request, CancellationToken ct)
+    public async Task<ActionResult<RegisterResponse>> Register([FromBody] RegisterRequest request, CancellationToken ct )
     {
-        var result = await _authService.RegisterAsync(request, ct);
+        var result = await _authService.RegisterAsync( request, ct );
+
         return StatusCode(StatusCodes.Status201Created, result);
     }
 

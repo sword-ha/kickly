@@ -658,23 +658,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\abdog\\.nuget\\packages\\": {},
+    "C:\\Users\\LAPTOP WORLD\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\abdog\\Documents\\Default Project\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj",
+      "projectUniqueName": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj",
       "projectName": "SportsBooking.Domain",
-      "projectPath": "C:\\Users\\abdog\\Documents\\Default Project\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj",
-      "packagesPath": "C:\\Users\\abdog\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\abdog\\Documents\\Default Project\\kickly\\src\\SportsBooking.Domain\\obj\\",
+      "projectPath": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj",
+      "packagesPath": "C:\\Users\\LAPTOP WORLD\\.nuget\\packages\\",
+      "outputPath": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\abdog\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\LAPTOP WORLD\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -683,6 +683,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -734,7 +735,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.303/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

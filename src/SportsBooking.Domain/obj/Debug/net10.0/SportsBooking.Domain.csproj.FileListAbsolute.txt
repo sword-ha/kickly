@@ -35,3 +35,16 @@ C:\Users\abdog\Documents\Default Project\kickly\src\SportsBooking.Domain\obj\Deb
 C:\Users\abdog\Documents\Default Project\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\refint\SportsBooking.Domain.dll
 C:\Users\abdog\Documents\Default Project\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\SportsBooking.Domain.pdb
 C:\Users\abdog\Documents\Default Project\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\ref\SportsBooking.Domain.dll
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Domain\bin\Debug\net10.0\SportsBooking.Domain.deps.json
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Domain\bin\Debug\net10.0\SportsBooking.Domain.dll
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Domain\bin\Debug\net10.0\SportsBooking.Domain.pdb
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\SportsBooking.Domain.csproj.AssemblyReference.cache
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\SportsBooking.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\SportsBooking.Domain.AssemblyInfoInputs.cache
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\SportsBooking.Domain.AssemblyInfo.cs
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\SportsBooking.Domain.csproj.CoreCompileInputs.cache
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\SportsBooking.Domain.sourcelink.json
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\SportsBooking.Domain.dll
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\refint\SportsBooking.Domain.dll
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\SportsBooking.Domain.pdb
+D:\Hossam_UpToDate\kickly\src\SportsBooking.Domain\obj\Debug\net10.0\ref\SportsBooking.Domain.dll
