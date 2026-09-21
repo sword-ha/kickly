@@ -1,0 +1,29 @@
+## .NET / Visual Studio ignores
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Ll]og/
+[Ll]ogs/
+
+# Rider / VS Code
+.idea/
+.vscode/
+
+# NuGet
+*.nupkg
+**/packages/*
+!**/packages/build/
+
+# OS files
+.DS_Store
+Thumbs.db
