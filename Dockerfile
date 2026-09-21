@@ -15,6 +15,7 @@ WORKDIR /app
 COPY --from=build /app/publish .
 
 ENV ASPNETCORE_URLS=http://+:8080
+ENV PORT=8080
 EXPOSE 8080
 
-ENTRYPOINT ["dotnet", "SportsBooking.API.dll"]
+ENTRYPOINT ["sh", "-c", "ASPNETCORE_URLS=http://+:${PORT:-8080} dotnet SportsBooking.API.dll"]
