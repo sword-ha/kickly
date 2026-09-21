@@ -42,7 +42,8 @@ public sealed class BearerSecuritySchemeTransformer(
 
         // Apply Bearer authentication to all operations
         foreach(var operation in document.Paths.Values
-                     .SelectMany( path => path.Operations ))
+                     .SelectMany( path => path.Operations )
+                     .Where( operation => operation.Value is not null ))
         {
             operation.Value.Security ??= [];
 

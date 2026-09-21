@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.OpenApi;
+﻿using Microsoft.OpenApi;
 using SportsBooking.API.OpenApiTransformers;
 
 namespace SportsBooking.API;
@@ -66,13 +65,6 @@ public static class DependencyInjections
                      ClockSkew = TimeSpan.Zero
                  };
              } );
-
-
-            services.Configure<IdentityOptions>( x => 
-            { 
-                x.SignIn.RequireConfirmedEmail = true;
-
-            } );
 
         }
 
