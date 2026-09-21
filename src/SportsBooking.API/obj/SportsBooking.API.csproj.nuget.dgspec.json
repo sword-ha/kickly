@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.API\\SportsBooking.API.csproj": {}
+    "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.API\\SportsBooking.API.csproj": {}
   },
   "projects": {
-    "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.API\\SportsBooking.API.csproj": {
+    "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.API\\SportsBooking.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.API\\SportsBooking.API.csproj",
+        "projectUniqueName": "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.API\\SportsBooking.API.csproj",
         "projectName": "SportsBooking.API",
-        "projectPath": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.API\\SportsBooking.API.csproj",
-        "packagesPath": "C:\\Users\\LAPTOP WORLD\\.nuget\\packages\\",
-        "outputPath": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.API\\obj\\",
+        "projectPath": "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.API\\SportsBooking.API.csproj",
+        "packagesPath": "C:\\Users\\abdog\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\LAPTOP WORLD\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\abdog\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -34,11 +33,11 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Application\\SportsBooking.Application.csproj": {
-                "projectPath": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Application\\SportsBooking.Application.csproj"
+              "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Application\\SportsBooking.Application.csproj": {
+                "projectPath": "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Application\\SportsBooking.Application.csproj"
               },
-              "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Infrastructure\\SportsBooking.Infrastructure.csproj": {
-                "projectPath": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Infrastructure\\SportsBooking.Infrastructure.csproj"
+              "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Infrastructure\\SportsBooking.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Infrastructure\\SportsBooking.Infrastructure.csproj"
               }
             }
           }
@@ -53,7 +52,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.400"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net10.0": {
@@ -110,7 +109,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
@@ -528,20 +527,20 @@
         }
       }
     },
-    "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Application\\SportsBooking.Application.csproj": {
+    "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Application\\SportsBooking.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Application\\SportsBooking.Application.csproj",
+        "projectUniqueName": "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Application\\SportsBooking.Application.csproj",
         "projectName": "SportsBooking.Application",
-        "projectPath": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Application\\SportsBooking.Application.csproj",
-        "packagesPath": "C:\\Users\\LAPTOP WORLD\\.nuget\\packages\\",
-        "outputPath": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Application\\obj\\",
+        "projectPath": "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Application\\SportsBooking.Application.csproj",
+        "packagesPath": "C:\\Users\\abdog\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\LAPTOP WORLD\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\abdog\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -550,7 +549,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -558,8 +556,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj": {
-                "projectPath": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj"
+              "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj": {
+                "projectPath": "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj"
               }
             }
           }
@@ -574,7 +572,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.400"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net10.0": {
@@ -626,7 +624,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -904,20 +902,20 @@
         }
       }
     },
-    "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj": {
+    "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj",
         "projectName": "SportsBooking.Domain",
-        "projectPath": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj",
-        "packagesPath": "C:\\Users\\LAPTOP WORLD\\.nuget\\packages\\",
-        "outputPath": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Domain\\obj\\",
+        "projectPath": "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj",
+        "packagesPath": "C:\\Users\\abdog\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\LAPTOP WORLD\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\abdog\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -926,7 +924,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -946,7 +943,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.400"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net10.0": {
@@ -978,7 +975,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -1256,20 +1253,20 @@
         }
       }
     },
-    "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Infrastructure\\SportsBooking.Infrastructure.csproj": {
+    "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Infrastructure\\SportsBooking.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Infrastructure\\SportsBooking.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Infrastructure\\SportsBooking.Infrastructure.csproj",
         "projectName": "SportsBooking.Infrastructure",
-        "projectPath": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Infrastructure\\SportsBooking.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\LAPTOP WORLD\\.nuget\\packages\\",
-        "outputPath": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Infrastructure\\SportsBooking.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\abdog\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\LAPTOP WORLD\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\abdog\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -1278,7 +1275,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -1286,11 +1282,11 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Application\\SportsBooking.Application.csproj": {
-                "projectPath": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Application\\SportsBooking.Application.csproj"
+              "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Application\\SportsBooking.Application.csproj": {
+                "projectPath": "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Application\\SportsBooking.Application.csproj"
               },
-              "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj": {
-                "projectPath": "D:\\Hossam_UpToDate\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj"
+              "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj": {
+                "projectPath": "C:\\Users\\abdog\\source\\repos\\kickly\\src\\SportsBooking.Domain\\SportsBooking.Domain.csproj"
               }
             }
           }
@@ -1305,7 +1301,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.400"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net10.0": {
@@ -1375,7 +1371,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

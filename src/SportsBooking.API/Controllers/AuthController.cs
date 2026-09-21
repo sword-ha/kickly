@@ -69,19 +69,4 @@ public sealed class AuthController( IAuthService authService ) : ControllerBase
         return Ok(result);
     }
 
-    [HttpPost("confirm-email")]
-    [AllowAnonymous]
-    public async Task<ActionResult<MessageResponse>> ConfirmEmail([FromBody] ConfirmEmailRequest request, CancellationToken ct)
-    {
-        var result = await _authService.ConfirmEmailAsync(request, ct);
-        return Ok(result);
     }
-
-    [HttpPost("resend-confirmation")]
-    [AllowAnonymous]
-    public async Task<ActionResult<MessageResponse>> ResendConfirmation([FromBody] ResendConfirmationRequest request, CancellationToken ct)
-    {
-        var result = await _authService.ResendConfirmationAsync(request, ct);
-        return Ok(result);
-    }
-}

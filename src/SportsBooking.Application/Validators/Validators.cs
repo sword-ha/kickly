@@ -91,23 +91,6 @@ public sealed class ChangePasswordRequestValidator : AbstractValidator<ChangePas
     }
 }
 
-public sealed class ConfirmEmailRequestValidator : AbstractValidator<ConfirmEmailRequest>
-{
-    public ConfirmEmailRequestValidator()
-    {
-        RuleFor(x => x.UserId).GreaterThan(0);
-        RuleFor(x => x.Token).NotEmpty();
-    }
-}
-
-public sealed class ResendConfirmationRequestValidator : AbstractValidator<ResendConfirmationRequest>
-{
-    public ResendConfirmationRequestValidator()
-    {
-        RuleFor(x => x.Email).NotEmpty().EmailAddress().MaximumLength(255);
-    }
-}
-
 public sealed class RefreshTokenRequestValidator : AbstractValidator<RefreshTokenRequest>
 {
     public RefreshTokenRequestValidator()

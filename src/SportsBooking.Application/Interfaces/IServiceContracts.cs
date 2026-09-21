@@ -19,8 +19,6 @@ public interface IAuthService
     Task<MessageResponse> ForgotPasswordAsync(ForgotPasswordRequest request, CancellationToken ct = default);
     Task<MessageResponse> ResetPasswordAsync(ResetPasswordRequest request, CancellationToken ct = default);
     Task<MessageResponse> ChangePasswordAsync(int userId, ChangePasswordRequest request, CancellationToken ct = default);
-    Task<MessageResponse> ConfirmEmailAsync(ConfirmEmailRequest request, CancellationToken ct = default);
-    Task<MessageResponse> ResendConfirmationAsync(ResendConfirmationRequest request, CancellationToken ct = default);
 }
 
 public interface IUserService

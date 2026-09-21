@@ -25,11 +25,6 @@ public sealed class ForbiddenException : DomainException
     public ForbiddenException(string message) : base(message) { }
 }
 
-public sealed class EmailNotConfirmedException : DomainException
-{
-    public EmailNotConfirmedException(string message) : base(message) { }
-}
-
 public sealed class PaymentFailedException : DomainException
 {
     public PaymentFailedException(string message) : base(message) { }

@@ -28,7 +28,7 @@ public static class ServiceCollectionExtensions
 
         services.AddIdentityCore<User>(options =>
         {
-            options.SignIn.RequireConfirmedEmail = true;
+            options.SignIn.RequireConfirmedEmail = false;
             options.User.RequireUniqueEmail = true;
 
             options.Password.RequiredLength = 6;
@@ -42,13 +42,7 @@ public static class ServiceCollectionExtensions
         })
             .AddRoles<IdentityRole<int>>()
             .AddEntityFrameworkStores<SportsBookingDbContext>()
-            .AddTokenProvider<EmailConfirmationTokenProvider<User>>("EmailDataProtectorTokenProvider")
             .AddTokenProvider<DataProtectorTokenProvider<User>>("Default");
-
-        services.Configure<IdentityOptions>(options =>
-        {
-            options.Tokens.EmailConfirmationTokenProvider = "EmailDataProtectorTokenProvider";
-        });
 
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IFieldRepository, FieldRepository>();

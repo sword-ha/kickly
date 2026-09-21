@@ -21,10 +21,6 @@ public sealed record RegisterResponse(int UserId, string Email, string Message);
 
 public sealed record MessageResponse(string Message);
 
-public sealed record ConfirmEmailRequest(int UserId, string Token);
-
-public sealed record ResendConfirmationRequest(string Email);
-
 public sealed record ForgotPasswordRequest(string Email);
 
 public sealed record ResetPasswordRequest(int UserId, string Token, string NewPassword);

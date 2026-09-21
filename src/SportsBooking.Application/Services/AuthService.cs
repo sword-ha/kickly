@@ -52,6 +52,7 @@ public sealed class AuthService : IAuthService
         {
             UserName = normalizedEmail,
             Email = normalizedEmail,
+            EmailConfirmed = true,
             FirstName = request.FirstName.Trim(),
             LastName = request.LastName.Trim(),
             PhoneNumber = request.PhoneNumber.Trim(),
@@ -70,20 +71,10 @@ public sealed class AuthService : IAuthService
 
         await _userManager.AddToRoleAsync(user, UserRole.Customer.ToString());
 
-        var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-
-        var code = WebEncoders.Base64UrlEncode( Encoding.UTF8.GetBytes( token ) );
-
-        await _emailSender.SendAsync(
-            user.Email!,
-            "Confirm your email - Sports Booking",
-            BuildConfirmationEmail(user.Id, code),
-            ct);
-
         return new RegisterResponse(
             user.Id,
             user.Email!,
-            "Registration successful. Please check your email to confirm your account before logging in.");
+            "Registration successful. You can now log in.");
     }
 
     public async Task<AuthResponse> LoginAsync(LoginRequest request, CancellationToken ct = default)
@@ -94,11 +85,6 @@ public sealed class AuthService : IAuthService
         if (!user.IsActive)
         {
             throw new ForbiddenException("This account has been deactivated.");
-        }
-
-        if (!user.EmailConfirmed)
-        {
-            throw new EmailNotConfirmedException("Email is not confirmed. Please confirm your email before logging in.");
         }
 
         if (await _userManager.IsLockedOutAsync(user))
@@ -163,7 +149,7 @@ public sealed class AuthService : IAuthService
         var user = await _userManager.FindByEmailAsync(request.Email.Trim().ToLowerInvariant());
 
         // Always return the same message to avoid leaking which emails exist.
-        if (user is not null && user.EmailConfirmed)
+        if (user is not null)
         {
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
             await _emailSender.SendAsync(
@@ -173,7 +159,7 @@ public sealed class AuthService : IAuthService
                 ct);
         }
 
-        return new MessageResponse("If the email exists and is confirmed, a password reset link has been sent.");
+        return new MessageResponse("If the email exists, a password reset link has been sent.");
     }
 
     public async Task<MessageResponse> ResetPasswordAsync(ResetPasswordRequest request, CancellationToken ct = default)
@@ -215,44 +201,6 @@ public sealed class AuthService : IAuthService
         return new MessageResponse("Password changed successfully.");
     }
 
-    public async Task<MessageResponse> ConfirmEmailAsync(ConfirmEmailRequest request, CancellationToken ct = default)
-    {
-        var user = await _userManager.FindByIdAsync(request.UserId.ToString())
-            ?? throw new NotFoundException("User was not found.");
-
-            var decodedTokenBytes = WebEncoders.Base64UrlDecode( request.Token );
-
-            var token = Encoding.UTF8.GetString( decodedTokenBytes );
-
-        var result = await _userManager.ConfirmEmailAsync(user, token);
-        if (!result.Succeeded)
-        {
-            throw new ValidationDomainException("Invalid or expired email confirmation token.");
-        }
-
-        return new MessageResponse("Email confirmed successfully. You can now log in.");
-    }
-
-    public async Task<MessageResponse> ResendConfirmationAsync(ResendConfirmationRequest request, CancellationToken ct = default)
-    {
-        var user = await _userManager.FindByEmailAsync(request.Email.Trim().ToLowerInvariant());
-
-        if (user is not null && !user.EmailConfirmed)
-        {
-            var token = await _userManager.GenerateEmailConfirmationTokenAsync( user );
-
-            var code =   WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
-
-            await _emailSender.SendAsync(
-                user.Email!,
-                "Confirm your email - Sports Booking",
-                BuildConfirmationEmail(user.Id, code),
-                ct);
-        }
-
-        return new MessageResponse("If the email exists and is not yet confirmed, a new confirmation link has been sent.");
-    }
-
     private async Task<AuthResponse> BuildAuthResponseAsync(User user, CancellationToken ct)
     {
         var accessToken = _tokenService.CreateToken(user.Id, user.Email ?? string.Empty, user.Role);
@@ -285,18 +233,6 @@ public sealed class AuthService : IAuthService
         {
             await _roleManager.CreateAsync(new IdentityRole<int>(roleName));
         }
-    }
-
-    private string BuildConfirmationEmail(int userId, string token)
-    {
-        var url = $"{_appOptions.ClientBaseUrl}{_appOptions.ConfirmEmailPath}?userId={userId}&token={token}";
-        return $"""
-            <h2>Welcome to Sports Booking!</h2>
-            <p>Thanks for registering. Please confirm your email address by clicking the link below:</p>
-            <p><a href="{url}">Confirm my email</a></p>
-            <p>If the button does not work, copy this link into your browser:</p>
-            <p><small>{url}</small></p>
-            """;
     }
 
     private string BuildPasswordResetEmail(int userId, string token)
